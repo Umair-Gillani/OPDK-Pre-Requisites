@@ -2,6 +2,13 @@
 
 #### This helper script completes all prerequisites for **Apigee 4.51.00** with using **EPEL release 8** on RHEL 8.
 
+```
+git clone https://github.com/Umair-Gillani/OPDK-Pre-Requisites.git
+cd OPDK-PRE-REQUISITIES
+bash pre-requisites.sh
+```
+
+
 ## Pre-Requisites
 
 1. **RHEL 7.6** or **7.9** — supports Apigee **4.19.06** *or* **4.51.00**
