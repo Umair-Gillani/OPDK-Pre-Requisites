@@ -4,7 +4,7 @@
 
 ```
 git clone https://github.com/Umair-Gillani/OPDK-Pre-Requisites.git
-cd OPDK-PRE-REQUISITIES
+cd OPDK-Pre-Requisites/
 bash pre-requisites.sh
 ```
 
