@@ -1,30 +1,36 @@
 # OPDK Installation Guide
 
-#### This helper script completes all prerequisites for **Apigee 4.51.00** with using **EPEL release 8** on RHEL 8.
 
 ```
 git clone https://github.com/Umair-Gillani/OPDK-Pre-Requisites.git
 cd OPDK-Pre-Requisites/
-bash pre-requisites.sh
 ```
 
+---
+<br>
 
 ## Pre-Requisites
 
-1. **RHEL 7.6** or **7.9** — supports Apigee **4.19.06** *or* **4.51.00**
-2. **RHEL 8** — supports Apigee **4.51.00** *(latest)*
 
-> **NOTE:**
+### Quick-view table
 
-> Installing **Apigee 4.19.06 on RHEL 7**  Comment-out the **EPEL release 8** command **and** un-comment the **EPEL release 7** command so that the correct utilities and dependencies are installed.
+| Script name                       | Default OS | Default Apigee version | Python version in script |
+| --------------------------------- | ---------- | ---------------------- | ------------------------ |
+| `rhel-8_Apigee_4-51.sh`     | RHEL 8     | 4.51.00                | Python 2                 |
+| `rhel-7_Apigee_4-51.sh`     | RHEL 7     | 4.51.00                | Python 2                 |
+<br>
+* If you want to install the **latest Apigee (4.53.00)** you must **edit the script yourself**:
 
-> • If you need a different Edge version, adjust the `bootstrap` variable at bootstrap downloading step within the script.
+  1. In Step 7, replace `python2` with `python3`.
+  2. In Step 8, replace `bootstrap_4.51.00.sh` with `bootstrap_4.53.00.sh`.
+
+<br>
 
 
 
----
+<br>
 
-<!-- 👉 Insert any shell commands or configuration snippets below, as needed -->
+
 
 
 

@@ -89,7 +89,7 @@ echo ""
 echo ""
 echo ""
 # From this point on the script is non‑interactive -------------------------
-log "Stopping and masking firewalld"
+log "Step 1: Stopping and masking firewalld"
 systemctl mask firewalld
 systemctl stop firewalld
 systemctl --no-pager status firewalld || true
@@ -97,13 +97,13 @@ echo ""
 echo ""
 echo ""
 
-log "Updating nss"
+log "Step 2: Updating nss"
 yum update -y nss
 echo ""
 echo ""
 echo ""
 
-log "Installing EPEL Release latest 8 Version Repo - (If you want to install EPEL release archived 7 version repo for Apigee v:4.19.?? 'run below commands')"
+log "Step 3: Installing EPEL Release latest 8 Version Repo - (If you want to install EPEL release archived 7 version repo for Apigee v:4.19.?? 'run below commands')"
 cmd "############ This below is for epel release archived 7 version repo ##############"
 wget https://archives.fedoraproject.org/pub/archive/epel/7/x86_64/Packages/e/epel-release-7-14.noarch.rpm
 rpm -ivh epel-release-7-14.noarch.rpm
@@ -119,7 +119,7 @@ echo ""
 echo ""
 
 
-log "Installing yum‑utils and Python 2"
+log "Step 4: Installing yum‑utils and Python 2"
 yum install -y yum-utils
 yum install -y python2
 sleep 5
@@ -130,7 +130,7 @@ echo ""
 echo ""
 
 
-log "Creating apigee user and directories"
+log "Step 5: Creating apigee user and directories"
 groupadd -r apigee || true
 id -u apigee &>/dev/null || \
   useradd -r -g apigee -d /opt/apigee -s /sbin/nologin -c "Apigee platform user" apigee
@@ -142,7 +142,7 @@ echo ""
 echo ""
 
 
-log "Updating /etc/hosts (comment first two lines)"
+log "Step 6: Updating /etc/hosts (comment first two lines)"
 sed -i '1,2 s/^/#/' /etc/hosts
 printf "%s\t%s\n" "$VM_IP" "$VM_HOST" >> /etc/hosts
 tail -n 5 /etc/hosts
@@ -151,7 +151,7 @@ echo ""
 echo ""
 
 
-# log "Disabling nginx and postgresql DNF modules"
+log "step 7: Disabling nginx and postgresql DNF modules"
 # yum module disable -y nginx
 # yum module disable -y postgresql
 # echo ""
@@ -159,7 +159,7 @@ echo ""
 # echo ""
 
 
-log "Downloading bootstrap script"
+log "Step 8: Downloading bootstrap script"
 VERSION=bootstrap_4.51.00.sh
 BOOT=/tmp/$VERSION
 curl -sSL https://software.apigee.com/$VERSION -o "$BOOT"
@@ -173,7 +173,7 @@ echo ""
 echo ""
 
 
-log "Installing Apigee Edge bootstrap (auto‑select option 1 for Java)"
+log "Step 9: Installing Apigee Edge bootstrap (auto‑select option 1 for Java)"
 printf '1\n' | bash "$BOOT" \
   apigeeuser="$APIGEE_USER" \
   apigeepassword="$APIGEE_PASSWORD"
