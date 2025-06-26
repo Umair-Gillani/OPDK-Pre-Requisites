@@ -80,11 +80,11 @@ echo ""
 echo ""
 
 # Prompt only for portal credentials
-read -p  "Apigee Edge OPDK Username          : " APIGEE_USER
-read -s -p "Apigee Edge OPDK password          : " APIGEE_PASSWORD
+#read -p  "Apigee Edge OPDK Username          : " APIGEE_USER
+#read -s -p "Apigee Edge OPDK password          : " APIGEE_PASSWORD
 echo
-
-
+APIGEE_USER=
+APIGEE_PASSWORD=
 echo ""
 echo ""
 echo ""
@@ -143,7 +143,7 @@ echo ""
 
 
 log "Step 6: Updating /etc/hosts (comment first two lines)"
-sed -i '1,2 s/^/#/' /etc/hosts
+sed -i '1,2,3,4 s/^/#/' /etc/hosts
 printf "%s\t%s\n" "$VM_IP" "$VM_HOST" >> /etc/hosts
 tail -n 5 /etc/hosts
 echo ""
