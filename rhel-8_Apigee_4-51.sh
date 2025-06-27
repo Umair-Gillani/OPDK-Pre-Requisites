@@ -151,9 +151,10 @@ echo ""
 echo ""
 
 
-log "Step 7: Disabling nginx and postgresql DNF modules"
+log "Step 7: Disabling nginx and postgresql DNF modules | setting clean_requirements_on_remove to 'False'"
 yum module disable -y nginx
 yum module disable -y postgresql
+sudo sed -i -E 's/^(clean_requirements_on_remove=).*/\1False/' /etc/yum.conf
 echo ""
 echo ""
 echo ""
