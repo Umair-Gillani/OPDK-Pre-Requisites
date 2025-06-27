@@ -143,7 +143,7 @@ echo ""
 
 
 log "Step 6: Updating /etc/hosts (comment first two lines)"
-sed -i '1,2,3,4 s/^/#/' /etc/hosts
+sed -i '1,2 s/^/#/' /etc/hosts
 printf "%s\t%s\n" "$VM_IP" "$VM_HOST" >> /etc/hosts
 tail -n 5 /etc/hosts
 echo ""
