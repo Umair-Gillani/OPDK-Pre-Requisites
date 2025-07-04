@@ -103,11 +103,12 @@ echo ""
 echo ""
 echo ""
 
-log "Step 3: Installing EPEL Release latest 8 Version Repo - (If you want to install EPEL release archived 7 version repo for Apigee v:4.19.?? 'run below commands')"
-cmd "############ This below is for epel release archived 7 version repo ##############"
-cmd "wget https://archives.fedoraproject.org/pub/archive/epel/7/x86_64/Packages/e/epel-release-7-14.noarch.rpm"
-cmd "rpm -ivh epel-release-7-14.noarch.rpm"
-cmd "yum install epel-release"
+log "Step 3: Installing EPEL Release latest 8 Version Repo "
+# log "(If you want to install EPEL release archived 7 version repo for Apigee v:4.19.?? 'run below commands') "
+# cmd "############ This below is for epel release archived 7 version repo ##############"
+# cmd "wget https://archives.fedoraproject.org/pub/archive/epel/7/x86_64/Packages/e/epel-release-7-14.noarch.rpm"
+# cmd "rpm -ivh epel-release-7-14.noarch.rpm"
+# cmd "yum install epel-release"
 ############ This below is for epel Release latest 8 version repo ##############
 curl -sSL -o /tmp/epel.rpm \
   https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
@@ -119,11 +120,11 @@ echo ""
 echo ""
 
 
-log "Step 4: Installing yum‑utils and Python 2"
+log "Step 4: Installing yum‑utils and Python 3"
 yum install -y yum-utils
-yum install -y python2
+yum install -y python3
 sleep 5
-ln -sf /usr/bin/python2 /usr/bin/python 
+ln -sf /usr/bin/python3 /usr/bin/python 
 # ln -s /usr/bin/python2 /usr/bin/python
 echo ""
 echo ""
@@ -161,7 +162,7 @@ echo ""
 
 
 log "Step 8: Downloading bootstrap script"
-VERSION=bootstrap_4.51.00.sh
+VERSION=bootstrap_4.52.02.sh
 BOOT=/tmp/$VERSION
 curl -sSL https://software.apigee.com/$VERSION -o "$BOOT"
 if [ ! -f "$BOOT" ]; then
@@ -213,8 +214,10 @@ cmd "/opt/apigee/apigee-service/bin/apigee-service apigee-mirror nginxconfig && 
 echo ""
 echo ""
 echo ""
-log1 " => Create Config file on all Nodes" 
-log1 " => Create License file on Management Node ONLY"
+log1 " => Create CONFIG FIlE on all Nodes" 
+cmd " nano /tmp/configFile"
+log1 " => Create LICENSE FILE on Management Node ONLY"
+cmd " nano /tmp/license.txt"
 echo ""
 echo ""
 echo ""
